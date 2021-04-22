@@ -7,7 +7,8 @@ import {
   BadgeCheckIcon,
   LightningBoltIcon,
 } from "@heroicons/react/outline";
-function Header() {
+
+function Header({ width, height }) {
   const items = {
     HOME: HomeIcon,
     TRENDING: LightningBoltIcon,
@@ -26,8 +27,8 @@ function Header() {
         <Image
           className="object-contain"
           src="https://press.hulu.com/wp-content/uploads/2020/02/hulu-white.png"
-          width={200}
-          height={100}
+          width={width}
+          height={height}
         />
       </div>
     </header>
