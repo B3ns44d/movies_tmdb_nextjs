@@ -1,5 +1,7 @@
 import Image from "next/image";
 import HeaderItem from "@/components/HeaderItem";
+import { useRouter } from "next/router";
+
 import {
   UserIcon,
   SearchIcon,
@@ -9,6 +11,8 @@ import {
 } from "@heroicons/react/outline";
 
 function Header({ width, height }) {
+  const router = useRouter();
+
   const items = {
     HOME: HomeIcon,
     TRENDING: LightningBoltIcon,
@@ -21,7 +25,7 @@ function Header({ width, height }) {
       <div className="flex flex-col sm:flex-row m-5 justify-between items-center h-auto">
         <div className="flex flex-grow justify-evenly max-w-2xl">
           {Object.entries(items).map(([key, value], index) => {
-            return <HeaderItem key={index} title={key} Icon={value} />;
+            return <HeaderItem key={index} title={key} Icon={value} rest={() => {router.push(`?req=${key}`)}}/>;
           })}
         </div>
         <Image

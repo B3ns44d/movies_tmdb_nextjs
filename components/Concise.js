@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ThumbUpIcon } from "@heroicons/react/outline";
+import { ThumbUpIcon, PlayIcon } from "@heroicons/react/outline";
 import { forwardRef } from "react";
 const Concise = forwardRef(({ result }, ref) => {
   return (
@@ -7,14 +7,21 @@ const Concise = forwardRef(({ result }, ref) => {
       ref={ref}
       className="p-2 transition duration-200 ease-in transform sm:hover:scale-105 hover:z-50 group cursor-pointer"
     >
-      <Image
-        layout="responsive"
-        src={`${process.env.NEXT_PUBLIC_BASE_URL}${
-          result.poster_path || result.backdrop_path
-        }`}
-        height={1080}
-        width={1920}
-      />
+      <div className="relative">
+        <Image
+          className="absolute inset-0 bg-cover bg-center z-0"
+          layout="responsive"
+          src={`${process.env.NEXT_PUBLIC_BASE_URL}${
+            result.poster_path || result.backdrop_path
+          }`}
+          height={1080}
+          width={1920}
+        />
+        <div className="opacity-0 hover:opacity-70 duration-300 absolute inset-0 z-10 flex justify-center items-center font-semibold">
+          <PlayIcon className="h-20" />
+        </div>
+      </div>
+
       <div className="p-2">
         <p className="truncate max-w-md">{result.overview}</p>
         <h2 className="mt-1 text-2xl text-white transition-all duration-100 ease-in-out group-hover:font-bold">
